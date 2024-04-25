@@ -33,5 +33,15 @@ Proposed file output:
     954068fg_audio.mp4
     jk43648e_audio.mp4
 
+Server then takes the job inputs and outputs and places them into a format that links the following:
+    UserID
+    Request Key ** TODO: Implement an API service for keys to be used.
+    Request Date/Time
+    Request Input
+    Service Output Dounload File Names
+
+File saved as {UserID}_DateTime.txt # Or whatever format fits best.
+This is saved locally for client costing
+
 
 
