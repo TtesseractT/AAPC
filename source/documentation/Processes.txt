@@ -6,6 +6,7 @@ https://panopto.com/{institute}/{VideoID_2}
 https://panopto.com/{institute}/{VideoID_N}
 
 The text document is sent to the server as a request/
+A job ID will be made for this request. ie : 294gh54254 10::random hex numbers
 
 Server checks to see if the following is True before continuing:
 - Compute service is available.
@@ -33,6 +34,9 @@ Proposed file output:
     954068fg_audio.mp4
     jk43648e_audio.mp4
 
+All files are saved in a directory within a shared drive.
+The name of the directory will be the Job ID ie. 294gh54254
+
 Server then takes the job inputs and outputs and places them into a format that links the following:
     UserID
     Request Key ** TODO: Implement an API service for keys to be used.
@@ -41,7 +45,31 @@ Server then takes the job inputs and outputs and places them into a format that 
     Service Output Dounload File Names
 
 File saved as {UserID}_DateTime.txt # Or whatever format fits best.
-This is saved locally for client costing
+This is saved locally for client costing. 
 
+Server is now ready to allocate the files to the Copute Services.
 
+## SERVICE MANAGER ##
+Server checks what servers are currently available.
+    /Server checks how many jobs each server has
+        //The server with the least amount of current jobs.
 
+Service then sends a request to the selected server to process the job.
+- All servers will have a shared storage drive meaning file transfer is instant.
+
+The request will have the following information in a json format.
+
+    /Compute Server Name            # Parsed from Service Manager
+    /UserID                         # Parsed from Request
+    /Request Date/Time              
+    /Number of Files to Process     # Parsed from the download output
+    /Input_Directory                # Parsed from the Job ID
+    /Output_Directory               # Parsed from the Job ID /Subfolder "Process Outputs"
+
+Request will be sent to the job que for the compute server.
+
+When server is ready, the job will start.
+
+Once All files have been processed server will clean up directory by removing mp4 files.
+
+Server will move onto the next job in the que.
