@@ -2,16 +2,49 @@
 
 
 Script: Job_ID_Gen.py
+    Description: 
+        Generates a unique 12 character hex number created at random using SHA256 with salt.
+        The usage for this script is to generate a string unique to the request of the user.
+    Args:
+        Input: String - Date & Time information 00:00:00 DD/MM/YYYY
+        Salt: This variable is based on the same Input String.
+    Output: 
+        String - variable {JobIDent} saved as a Json file named the same as the variable 
+        {JobIDent}.
+    Example:
+        Salt:   00:00:00 DD/MM/YYYY
+        Input:  00:00:00 DD/MM/YYYY
+        Output JobIDent = 04b990066fea9c71b84b6b5589ae46
 
-Description: 
-    Generates a unique 12 character hex number created at random using SHA256 with salt.
-    The usage for this script is to generate a string unique to the request of the user.
-Args:
-    Input: String - Date & Time information 00:00:00 DD/MM/YYYY
-    Salt: This variable is based on the same Input String.
-Output: 
-    String - variable {JobIDent}
-Example:
-    Salt:   00:00:00 DD/MM/YYYY
-    Input:  00:00:00 DD/MM/YYYY
-    Output JobIDent = 04b990066fea9c71b84b6b5589ae46ef75bae899fdd6e72c5108ffca2d5920a9
+Script: JobIDent_DirBuilder.py
+    Description:   
+        Generate a directory called the same string as the JobIDent string created by the 
+        Job_ID_Gen.py script.
+    Args:
+        Input: Json file called {JobIDent} string.
+    Outputs:
+        File directory that can be easily referenced and is unreplicable
+    Example:
+        /tmp/{JobIDent}
+                /04b990066fea9c71b84b6b5589ae46.json
+
+Script: URL_Validator.py
+    Description:
+        This script goes through all the links in the request and tests each of them if 
+        they are valid references to the videos.
+        This will form part of the initial validation tests.
+    Args:
+        Input: Text file contining URL strings
+        Panopto API Key needed as input for reference
+    Process:
+        Panopto API logic to determine the reference for a URL and its authentisity.
+        Internal logic to log any failures and write them into a Json File saving this 
+        file in the directory created by the JobIDent string.
+    Output:
+        Boolian True:False # Indicated if each of the URLs are valid.
+        Json file: Output any failed links
+    Example: 
+        https://panopto.com/{institute}/{VideoID_1}     TRUE
+        https://panopto.com/{institute}/{VideoID_2}     FALSE
+    
+
