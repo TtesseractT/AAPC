@@ -16,11 +16,13 @@ Server checks to see if the following is True before continuing:
         //Servers Status
 
 - Text File is formated correctly. 
-- URLs in the video are useable.
+- URLs in the video are useable - return valid video link that can be used.
 
 
 Server defines that all pretests have been completed.
 - server sends the text file to the downloader script through subprocess.run(argparse).
+if the downloader fails on a file, it will try again up to 3 times before skipping the file.
+If a skip happens, the failure will be logged in the users Job ID directory.
 
 Download script downloads audio files from the URL videos.
 script parses the outputs as indevidual audio files.
@@ -51,11 +53,14 @@ Server is now ready to allocate the files to the Copute Services.
 
 ## SERVICE MANAGER ##
 Server checks what servers are currently available.
+All servers will have a maximum of 4 GPUs that can run up to 7 processes at a time on each GPU = 28 Jobs per server.
     /Server checks how many jobs each server has
         //The server with the least amount of current jobs.
+        //Server will check the current resources for each servers GPU for availablity
 
 Service then sends a request to the selected server to process the job.
 - All servers will have a shared storage drive meaning file transfer is instant.
+- All servers will have a maximum of 4 GPUs that can run up to 7 processes at a time.
 
 The request will have the following information in a json format.
 
@@ -73,3 +78,5 @@ When server is ready, the job will start.
 Once All files have been processed server will clean up directory by removing mp4 files.
 
 Server will move onto the next job in the que.
+
+
