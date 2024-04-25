@@ -1,0 +1,17 @@
+
+
+
+Script: Job_ID_Gen.py
+
+Description: 
+    Generates a unique 12 character hex number created at random using SHA256 with salt.
+    The usage for this script is to generate a string unique to the request of the user.
+Args:
+    Input: String - Date & Time information 00:00:00 DD/MM/YYYY
+    Salt: This variable is based on the same Input String.
+Output: 
+    String - variable {JobIDent}
+Example:
+    Salt:   00:00:00 DD/MM/YYYY
+    Input:  00:00:00 DD/MM/YYYY
+    Output JobIDent = 04b990066fea9c71b84b6b5589ae46ef75bae899fdd6e72c5108ffca2d5920a9
