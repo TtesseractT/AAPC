@@ -37,6 +37,7 @@ Script: URL_Validator.py
         Input: Text file contining URL strings
         Panopto API Key needed as input for reference
     Process:
+        Path into the correct directory /tmp/{JobIDent}
         Panopto API logic to determine the reference for a URL and its authentisity.
         Internal logic to log any failures and write them into a Json File saving this 
         file in the directory created by the JobIDent string.
@@ -46,5 +47,6 @@ Script: URL_Validator.py
     Example: 
         https://panopto.com/{institute}/{VideoID_1}     TRUE
         https://panopto.com/{institute}/{VideoID_2}     FALSE
+
     
 
