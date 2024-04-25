@@ -1,0 +1,37 @@
+User created '.txt' document with the URLs of the panopto videos that need to be processed.
+
+Proposed '.txt' document context - 
+https://panopto.com/{institute}/{VideoID_1}
+https://panopto.com/{institute}/{VideoID_2}
+https://panopto.com/{institute}/{VideoID_N}
+
+The text document is sent to the server as a request/
+
+Server checks to see if the following is True before continuing:
+- Compute service is available.
+    /Model Allocation Service Availability
+    /Model Compute Service Availability
+        //Servers Availabile
+        //Servers Status
+
+- Text File is formated correctly. 
+- URLs in the video are useable.
+
+
+Server defines that all pretests have been completed.
+- server sends the text file to the downloader script through subprocess.run(argparse).
+
+Download script downloads audio files from the URL videos.
+script parses the outputs as indevidual audio files.
+
+    |identification_code = session_id[:8] # 8 dependant on the session ID variation 
+    |   filename = f'{identification_code}_audio.mp4
+
+Proposed file output:
+{identification_code}_audio.mp4
+    43h5j345_audio.mp4
+    954068fg_audio.mp4
+    jk43648e_audio.mp4
+
+
+
