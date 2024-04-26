@@ -48,5 +48,5 @@ Script: URL_Validator.py
         https://panopto.com/{institute}/{VideoID_1}     TRUE
         https://panopto.com/{institute}/{VideoID_2}     FALSE
 
-    
+
 
