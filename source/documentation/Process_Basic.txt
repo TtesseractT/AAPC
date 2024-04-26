@@ -1,0 +1,37 @@
+
+-What URLs in the text file is up to the clients discression.
+
+subprocess runs a download script.
+    This script will use multiprocessing to download all files at the same time.
+    - Or at least up to a specific bandwidth - maybe 30 files at a time.
+    
+    All files are saved into a directory. /MP4 Files
+
+subprocess runs a conversion script.
+    Created a directory that houses wav files for transcription.
+    Goes into the output directory for the downloads, and uses multiprocessing
+    to convert all MP4 files to WAV files with the same name. possibly librosa, ffmpeg - whatever is fastest.
+
+the next part of the script will do the following in a loop till all files are processed.
+
+    Creates a que system for GPU allocation.
+    Specifications
+    GPUs = 4 x A100 80GB 
+    Each job = 10GB
+    Number of Jobs per GPU = 8
+    Number of GPUs = 4 
+    Total Jobs at one time = 32
+
+    
+    Loop will allocate each job to the spare jobs spots when a job has finished.
+
+    Before makeing the subprocess.run for the job, a directory folder within a destination will be named 
+    the same as the WAV file being processed.
+
+    The subprocess will output to this folder.
+
+    this will check every 500ms - but does not need to log. 
+
+    Once all files have been processed a cleenup script will move all original MP4 files and the WAVS to the
+    folder containing the outputs of the subprocess.
+    
