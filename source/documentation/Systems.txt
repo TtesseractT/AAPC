@@ -1,6 +1,4 @@
 
-
-
 Script: Job_ID_Gen.py
     Description: 
         Generates a unique 20 character hex number created at random using SHA with salt.
