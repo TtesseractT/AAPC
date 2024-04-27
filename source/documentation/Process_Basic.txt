@@ -22,8 +22,6 @@ the next part of the script will do the following in a loop till all files are p
     Number of GPUs = 4 
     Total Jobs at one time = 32
     
-
-    
     Loop will allocate each job to the spare jobs spots when a job has finished.
 
     Before makeing the subprocess.run for the job, a directory folder within a destination will be named 
