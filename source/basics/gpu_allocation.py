@@ -60,9 +60,9 @@ if __name__ == "__main__":
     with Pool(num_gpus * max_jobs_per_gpu) as pool:
         pool.map(process_file, [(os.path.join(input_folder, f), d, gpu_allocator(queue_dict, lock), queue_dict, lock) for f, d in prepared_paths])
 
-    # Move original MP4 and WAV files to destination
+"""    # Move original MP4 and WAV files to destination
     for file in files:
         original_mp4 = os.path.join(input_folder, file.replace('.wav', '.mp4'))
         original_wav = os.path.join(input_folder, file)
         subprocess.run(['mv', original_mp4, destination_folder])
-        subprocess.run(['mv', original_wav, destination_folder])
+        subprocess.run(['mv', original_wav, destination_folder])"""
